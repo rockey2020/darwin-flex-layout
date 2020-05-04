@@ -1,7 +1,7 @@
 {
   "name": "darwin-flex-layout",
-  "version": "2.0.2",
-  "description": "",
+  "version": "2.0.4",
+  "description": "da-flex布局方案",
   "main": "./dist/index.min.css",
   "scripts": {
     "build": "webpack"

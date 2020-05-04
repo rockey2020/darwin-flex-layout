@@ -1,8 +1,10 @@
 const path = require('path');
+const webpack = require('webpack');
 const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const LICENSE = fs.readFileSync('LICENSE', 'utf8');
 
 //删除没必要的index.js文件
 class removeFiles {
@@ -75,6 +77,9 @@ module.exports = {
             },
             canPrint: true,
         }),
-        new removeFiles()
+        new webpack.BannerPlugin({
+            banner: LICENSE
+        }),
+        new removeFiles(),
     ],
 };
