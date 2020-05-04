@@ -1,11 +1,10 @@
 {
   "name": "darwin-flex-layout",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "",
   "main": "./dist/index.min.css",
   "scripts": {
-    "build": "webpack",
-    "publish": "npm publish"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
