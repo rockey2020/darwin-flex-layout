@@ -35,7 +35,8 @@ module.exports = {
                         options: {
                             plugins: [
                                 require('autoprefixer'),
-                                require('postcss-preset-env')
+                                require('postcss-preset-env'),
+                                require('postcss-initial'),
                             ]
                         }
                     }
