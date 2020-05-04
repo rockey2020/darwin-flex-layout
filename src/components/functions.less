@@ -1,0 +1,130 @@
+//循环函数 用以生成同类样式
+.loop (@className,@i) when (@i >= 0) {
+  .@{className}-@{i} {
+    width: @i+0%;
+  }
+  .loop(@className, @i - 1);
+}
+
+//生成flex定位
+.generatePosition(@position) {
+  .@{position}, &.@{position} {
+    position: @position;
+
+    .@{position}-top, &.@{position}-top {
+      top: 0;
+    }
+
+    .@{position}-bottom, &.@{position}-bottom {
+      bottom: 0;
+    }
+
+    .@{position}-left, &.@{position}-left {
+      left: 0;
+    }
+
+    .@{position}-right, &.@{position}-right {
+      right: 0;
+    }
+  }
+}
+
+//生成flex方向
+.generateAlignment(@className,@attribute,@direction) {
+  .@{className}, &.@{className} {
+      @{attribute}-content: ~"@{direction}";
+      @{attribute}-items: ~"@{direction}";
+  }
+}
+
+//默认的重置样式方法
+.reset-css(@className,@stopClassName) {
+  &:not(.@{stopClassName}) {
+    *:not(.@{stopClassName}),
+    ::before:not(.@{stopClassName}),
+    ::after:not(.@{stopClassName}) {
+      padding: 0;
+      margin: 0;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: auto;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    ::before:not(.@{stopClassName}),
+    ::after:not(.@{stopClassName}) {
+      text-decoration: inherit;
+      vertical-align: inherit;
+    }
+
+    .reset-css-original-label(@className, @stopClassName);
+
+    &.@{className}-all:not(.@{stopClassName}) {
+      all: initial;
+
+      &.@{className}-all-child:not(.@{stopClassName}) {
+        * {
+          all: initial;
+        }
+      }
+    }
+  }
+}
+
+//对原始元素进行样式重置
+.reset-css-original-label(@className,@stopClassName) {
+  html:not(.@{stopClassName}) {
+    word-break: normal;
+    tab-size: 4;
+    line-height: 1;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  img:not(.@{stopClassName}) {
+    display: block;
+    width: 100%;
+    border-style: none;
+  }
+
+  button:not(.@{stopClassName}), input:not(.@{stopClassName}), ul:not(.@{stopClassName}), li:not(.@{stopClassName}), textarea:not(.@{stopClassName}), ol:not(.@{stopClassName}), h3:not(.@{stopClassName}), p:not(.@{stopClassName}), img:not(.@{stopClassName}) {
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    background-color: unset;
+    font-size: inherit;
+    list-style: none;
+
+    &:focus, &:hover {
+      outline: none;
+    }
+  }
+
+  input:not(.@{stopClassName}), textarea:not(.@{stopClassName}) {
+    -webkit-appearance: none;
+  }
+
+  pre:not(.@{stopClassName}) {
+    width: 100%;
+    white-space: pre-line;
+    font-family: inherit;
+    margin: 0;
+  }
+
+  button:not(.@{stopClassName}) {
+    cursor: pointer;
+  }
+}

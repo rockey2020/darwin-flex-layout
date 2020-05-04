@@ -36,7 +36,12 @@ module.exports = {
                             modules: {
                                 getLocalIdent: (context, localIdentName, localName, options) => {
                                     let prefix = "da-flex-";
-                                    if (prefix.slice(0, -1) === localName) prefix = "";
+                                    let ignorePrefixKey = "_ignore-";
+                                    if ((prefix.slice(0, -1) === localName)) prefix = "";
+                                    if ((localName.includes(ignorePrefixKey))) {
+                                        prefix = "";
+                                        localName = localName.replace(ignorePrefixKey, "");
+                                    }
                                     return `${prefix}${localName}`;
                                 },
                             },
