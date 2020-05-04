@@ -29,7 +29,19 @@ module.exports = {
             {
                 test: /\.less$/,
                 use: [
-                    MiniCssExtractPlugin.loader, 'css-loader',
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                getLocalIdent: (context, localIdentName, localName, options) => {
+                                    let prefix = "da-flex-";
+                                    if (prefix.slice(0, -1) === localName) prefix = "";
+                                    return `${prefix}${localName}`;
+                                },
+                            },
+                        }
+                    },
                     {
                         loader: "postcss-loader",
                         options: {
