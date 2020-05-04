@@ -1,0 +1,85 @@
+//循环函数 用以生成同类样式
+.loop (@className,@i) when (@i >= 0) {
+  .@{className}-@{i} {
+    width: @i+0%;
+  }
+  .loop(@className, @i - 1);
+}
+
+.da-flex {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  flex-flow: wrap;
+
+  .loop(da-flex-item, 100);
+
+  .da-flex-inline, &.da-flex-inline {
+    display: inline-flex;
+    width: auto;
+  }
+
+  .da-flex-justify-start, &.da-flex-justify-start, .da-flex-start, &.da-flex-start {
+    justify-content: flex-start;
+    justify-items: flex-start;
+  }
+
+  .da-flex-justify-center, &.da-flex-justify-center, .da-flex-center, &.da-flex-center {
+    justify-content: center;
+    justify-items: center;
+  }
+
+  .da-flex-justify-end, &.da-flex-justify-end, .da-flex-end, &.da-flex-end {
+    justify-content: flex-end;
+    justify-items: flex-end;
+  }
+
+  .da-flex-align-start, &.da-flex-align-start, .da-flex-start, &.da-flex-start {
+    align-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .da-flex-align-center, &.da-flex-align-center, .da-flex-center, &.da-flex-center {
+    align-content: center;
+    align-items: center;
+  }
+
+  .da-flex-align-end, &.da-flex-align-end, .da-flex-end, &.da-flex-end {
+    align-content: flex-end;
+    align-items: flex-end;
+  }
+
+  .da-flex-column, &.da-flex-column {
+    flex-flow: column;
+  }
+
+  .da-flex-fixed, &.da-flex-fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+
+    .da-flex-fixed-top, &.da-flex-fixed-top {
+      top: 0;
+    }
+
+    .da-flex-fixed-bottom, &.da-flex-fixed-bottom {
+      bottom: 0;
+    }
+  }
+
+  .da-flex-abs, &.da-flex-abs {
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    .da-flex-abs-top, &.da-flex-abs-top {
+      top: 0;
+    }
+
+    .da-flex-abs-bottom, &.da-flex-abs-bottom {
+      bottom: 0;
+    }
+  }
+}
