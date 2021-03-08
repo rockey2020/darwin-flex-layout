@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const LICENSE = fs.readFileSync('LICENSE', 'utf8');
 
@@ -52,30 +52,30 @@ module.exports = {
                     {
                         loader: "postcss-loader",
                         options: {
-                            plugins: [
-                                require('autoprefixer'),
-                                require('postcss-preset-env'),
-                                require('postcss-initial'),
-                                require('postcss-flexbugs-fixes'),
-                            ]
+                            postcssOptions: {
+                                plugins: [
+                                    require('autoprefixer'),
+                                    require('postcss-preset-env'),
+                                    require('postcss-initial'),
+                                    require('postcss-flexbugs-fixes'),
+                                ]
+                            }
                         }
-                    }
-                    , 'less-loader'
+                    }, 'less-loader'
                 ],
             }
+        ]
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new CssMinimizerPlugin(),
         ]
     },
     plugins: [
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: 'index.min.css'
-        }),
-        new OptimizeCSSAssetsPlugin({
-            cssProcessor: require('cssnano'),
-            cssProcessorPluginOptions: {
-                preset: ['default', {discardComments: {removeAll: false}}],
-            },
-            canPrint: true,
         }),
         new webpack.BannerPlugin({
             banner: LICENSE
