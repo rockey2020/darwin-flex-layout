@@ -58,7 +58,7 @@ module.exports = (env) => {
                                         require('autoprefixer'),
                                         require('postcss-preset-env'),
                                         require('postcss-initial'),
-                                        require('postcss-flexbugs-fixes'),
+                                        require('postcss-flexbugs-fixes')
                                     ]
                                 }
                             }
