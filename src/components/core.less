@@ -1,4 +1,4 @@
-@import "functions";
+@import "./functions";
 
 .da-flex {
   width: 100%;
@@ -10,6 +10,17 @@
 
   //宽度生成
   .loop(item, 100);
+
+  //左侧的间隔格数 margin-left
+  .loopOffsetSpace(100);
+
+  //统一定位属性
+  &[class*=pull-], &&[class*=pull-], &[class*=push-], &&[class*=push-] {
+    position: relative;
+  }
+
+  //向左向右相对移动 left right
+  .loopPullAndPushSize(100);
 
   //基础布局
   .inline, &.inline {
@@ -24,7 +35,6 @@
   .wrap, &.wrap {
     flex-wrap: wrap;
   }
-
 
   //对齐方式布局
   .generateAlignment(justify-start, justify, flex-start);
