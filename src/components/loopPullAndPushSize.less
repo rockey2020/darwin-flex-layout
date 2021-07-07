@@ -16,3 +16,20 @@
   });
 
 }
+
+.nVueLoopPullAndPushSize () {
+
+  each(range(@spaceProportion), {
+
+    &.pull-@{value}, .pull-@{value} {
+      position: relative;
+      right: @value * @nVueWidthProportion;
+    }
+    &.push-@{value}, .push-@{value} {
+      position: relative;
+      left: @value * @nVueWidthProportion;
+    }
+
+  });
+
+}

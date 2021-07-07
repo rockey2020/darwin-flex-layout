@@ -12,3 +12,16 @@
   });
 
 }
+
+.nVueLoopItemWidth () {
+  @className: ~"item";
+
+  each(range(@spaceProportion), {
+
+    .@{className}-@{value} {
+      width: @value * @nVueWidthProportion;
+    }
+
+  });
+
+}

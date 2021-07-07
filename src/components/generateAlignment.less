@@ -7,3 +7,19 @@
   }
 
 }
+
+.nVueGenerateAlignmentByJustify(@className,@attribute,@direction) {
+
+  .@{className}, &.@{className} {
+      @{attribute}-content: ~"@{direction}";
+  }
+
+}
+
+.nVueGenerateAlignmentByAlign(@className,@attribute,@direction) {
+
+  .@{className}, &.@{className} {
+      @{attribute}-items: ~"@{direction}";
+  }
+
+}

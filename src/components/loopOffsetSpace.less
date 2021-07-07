@@ -14,3 +14,18 @@
   });
 
 }
+
+.nVueLoopOffsetSpace() {
+
+  each(range(@spaceProportion), {
+
+    &.offset-left-@{value}, .offset-left-@{value} {
+      margin-left: @value * @nVueWidthProportion;
+    }
+    &.offset-right-@{value}, .offset-right-@{value} {
+      margin-right: @value * @nVueWidthProportion;
+    }
+
+  });
+
+}
