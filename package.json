@@ -2,7 +2,7 @@
   "name": "darwin-flex-layout",
   "version": "2.1.0",
   "description": "da-flex布局方案",
-  "main": "./dist/index.min.css",
+  "main": "./dist/general.css",
   "scripts": {
     "buildProduction": "webpack --env NODE_ENV=production --env production --progress",
     "buildDevelopment": "webpack --env NODE_ENV=development --env development --progress",
