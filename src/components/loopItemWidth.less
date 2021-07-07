@@ -1,0 +1,14 @@
+@import "./variable.less";
+
+.loopItemWidth () {
+  @className: ~"item";
+
+  each(range(@spaceProportion), {
+
+    .@{className}-@{value} {
+      width: @value * @generalWidthProportion;
+    }
+
+  });
+
+}

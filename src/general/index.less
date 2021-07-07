@@ -1,12 +1,15 @@
-@import "./src/components/reset-css";
-@import "./src/components/functions";
+@import "../components/generateAlignment";
+@import "../components/generatePosition";
+@import "../components/loopItemWidth";
+@import "../components/loopOffsetSpace";
+@import "../components/loopPullAndPushSize";
+@import "./reset-css";
 
 .da-flex {
   width: 100%;
   display: flex;
   align-items: center;
   align-content: center;
-  justify-items: center;
   flex-wrap: nowrap;
 
   //对齐方式布局
@@ -43,10 +46,10 @@
   }
 
   //宽度生成
-  .loop(item, 100);
+  .loopItemWidth();
 
   //左侧的间隔格数 margin-left
-  .loopOffsetSpace(100);
+  .loopOffsetSpace();
 
   //统一定位属性
   &[class*=pull-], &&[class*=pull-], &[class*=push-], &&[class*=push-] {
@@ -54,7 +57,7 @@
   }
 
   //向左向右相对移动 left right
-  .loopPullAndPushSize(100);
+  .loopPullAndPushSize();
 
   //定位布局
   .generatePosition(static);

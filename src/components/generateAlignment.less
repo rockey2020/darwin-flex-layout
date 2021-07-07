@@ -1,0 +1,9 @@
+//生成flex方向
+.generateAlignment(@className,@attribute,@direction) {
+
+  .@{className}, &.@{className} {
+      @{attribute}-content: ~"@{direction}";
+      @{attribute}-items: ~"@{direction}";
+  }
+
+}

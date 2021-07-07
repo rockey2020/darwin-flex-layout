@@ -1,0 +1,24 @@
+//生成flex定位
+.generatePosition(@position) {
+
+  .@{position}, &.@{position} {
+    position: @position;
+
+    .@{position}-top, &.@{position}-top {
+      top: 0;
+    }
+
+    .@{position}-bottom, &.@{position}-bottom {
+      bottom: 0;
+    }
+
+    .@{position}-left, &.@{position}-left {
+      left: 0;
+    }
+
+    .@{position}-right, &.@{position}-right {
+      right: 0;
+    }
+  }
+
+}

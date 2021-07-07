@@ -1,66 +1,5 @@
-//循环函数 用以生成同类样式
-.loop (@className,@i) when (@i >= 0) {
-  .@{className}-@{i} {
-    width: @i+0%;
-  }
-  .loop(@className, @i - 1);
-}
-
-//循环函数 用以生成同类样式
-.loopOffsetSpace (@i) when (@i >= 0) {
-  &.offset-left-@{i}, .offset-left-@{i} {
-    margin-left: @i+0%;
-  }
-  &.offset-right-@{i}, .offset-right-@{i} {
-    margin-right: @i+0%;
-  }
-  .loopOffsetSpace(@i - 1);
-}
-
-//循环函数 用以生成同类样式
-.loopPullAndPushSize (@i) when (@i >= 0) {
-  &.pull-@{i}, .pull-@{i} {
-    right: @i+0%;
-  }
-  &.push-@{i}, .push-@{i} {
-    left: @i+0%;
-  }
-  .loopPullAndPushSize(@i - 1);
-}
-
-//生成flex定位
-.generatePosition(@position) {
-  .@{position}, &.@{position} {
-    position: @position;
-
-    .@{position}-top, &.@{position}-top {
-      top: 0;
-    }
-
-    .@{position}-bottom, &.@{position}-bottom {
-      bottom: 0;
-    }
-
-    .@{position}-left, &.@{position}-left {
-      left: 0;
-    }
-
-    .@{position}-right, &.@{position}-right {
-      right: 0;
-    }
-  }
-}
-
-//生成flex方向
-.generateAlignment(@className,@attribute,@direction) {
-  .@{className}, &.@{className} {
-      @{attribute}-content: ~"@{direction}";
-      @{attribute}-items: ~"@{direction}";
-  }
-}
-
 //默认的重置样式方法
-.reset-css(@className,@stopClassName) {
+.resetCss(@className,@stopClassName) {
   &:not(.@{stopClassName}) {
     *:not(.@{stopClassName}),
     ::before:not(.@{stopClassName}),
@@ -80,7 +19,7 @@
       vertical-align: inherit;
     }
 
-    .reset-css-original-label(@className, @stopClassName);
+    .resetCssOriginalLabel(@className, @stopClassName);
 
     &.@{className}-all:not(.@{stopClassName}) {
       all: initial;
@@ -95,7 +34,7 @@
 }
 
 //对原始元素进行样式重置
-.reset-css-original-label(@className,@stopClassName) {
+.resetCssOriginalLabel(@className,@stopClassName) {
   html:not(.@{stopClassName}) {
     word-break: normal;
     tab-size: 4;

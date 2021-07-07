@@ -1,0 +1,16 @@
+@import "./variable.less";
+
+.loopOffsetSpace() {
+
+  each(range(@spaceProportion), {
+
+    &.offset-left-@{value}, .offset-left-@{value} {
+      margin-left: @value * @generalWidthProportion;
+    }
+    &.offset-right-@{value}, .offset-right-@{value} {
+      margin-right: @value * @generalWidthProportion;
+    }
+
+  });
+
+}

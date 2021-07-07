@@ -1,0 +1,18 @@
+@import "./variable.less";
+
+.loopPullAndPushSize () {
+
+  each(range(@spaceProportion), {
+
+    &.pull-@{value}, .pull-@{value} {
+      position: relative;
+      right: @value * @generalWidthProportion;
+    }
+    &.push-@{value}, .push-@{value} {
+      position: relative;
+      left: @value * @generalWidthProportion;
+    }
+
+  });
+
+}
