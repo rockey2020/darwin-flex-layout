@@ -5,14 +5,27 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const LICENSE = fs.readFileSync('LICENSE', 'utf8');
 
-//删除没必要的index.js文件
+const entry = {
+    general: "./src/general/index.js",
+    nvue: "./src/nvue/index.js",
+}
+
+//删除没必要的生成文件
 class removeFiles {
     apply(compiler) {
         compiler.hooks.afterEmit.tapPromise('removeFiles', compilation => {
             return new Promise((resolve, reject) => {
-                fs.unlink(path.resolve(__dirname, 'dist/index.js'), async () => {
-                    resolve();
-                });
+                try {
+                    fs.unlinkSync(path.resolve(__dirname, 'dist/index.min.css'));
+                } catch (e) {
+                }
+                Object.keys(entry).forEach(value => {
+                    try {
+                        fs.unlinkSync(path.resolve(__dirname, `dist/${value}.js`));
+                    } catch (e) {
+                    }
+                })
+                resolve();
             });
         });
     }
@@ -21,10 +34,9 @@ class removeFiles {
 module.exports = (env) => {
     const isProduction = env.NODE_ENV === "production";
     return {
-        entry: './src/index.js',
+        entry,
         mode: env.NODE_ENV,
         output: {
-            filename: 'index.js',
             path: path.resolve(__dirname, 'dist'),
         },
         module: {
@@ -62,7 +74,8 @@ module.exports = (env) => {
                                     ]
                                 }
                             }
-                        }, 'less-loader'
+                        },
+                        'less-loader'
                     ],
                 }
             ]
@@ -74,9 +87,7 @@ module.exports = (env) => {
             ]
         },
         plugins: [
-            new MiniCssExtractPlugin({
-                filename: isProduction ? 'index.min.css' : 'index.css'
-            }),
+            new MiniCssExtractPlugin({}),
             new webpack.BannerPlugin({
                 banner: LICENSE
             }),
