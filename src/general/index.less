@@ -13,23 +13,24 @@
   flex-wrap: nowrap;
 
   //对齐方式布局
-  .generateAlignment(justify-start, justify, flex-start);
-  .generateAlignment(justify-center, justify, center);
-  .generateAlignment(justify-end, justify, flex-end);
-
   .generateAlignment(align-start, align, flex-start);
   .generateAlignment(align-center, align, center);
   .generateAlignment(align-end, align, flex-end);
+
+  .generateAlignment(align-space-between, align, space-between);
+  .generateAlignment(align-space-around, align, space-around);
+  .generateAlignment(align-space-evenly, align, space-evenly);
+  .generateAlignment(align-stretch, align, stretch);
+
+  .generateAlignment(justify-start, justify, flex-start);
+  .generateAlignment(justify-center, justify, center);
+  .generateAlignment(justify-end, justify, flex-end);
 
   .generateAlignment(justify-space-between, justify, space-between);
   .generateAlignment(justify-space-around, justify, space-around);
   .generateAlignment(justify-space-evenly, justify, space-evenly);
   .generateAlignment(justify-stretch, justify, stretch);
 
-  .generateAlignment(align-space-between, align, space-between);
-  .generateAlignment(align-space-around, align, space-around);
-  .generateAlignment(align-space-evenly, align, space-evenly);
-  .generateAlignment(align-stretch, align, stretch);
 
   //基础布局
   .inline, &.inline {
@@ -50,11 +51,6 @@
 
   //左侧的间隔格数 margin-left
   .loopOffsetSpace();
-
-  //统一定位属性
-  &[class*=pull-], &&[class*=pull-], &[class*=push-], &&[class*=push-] {
-    position: relative;
-  }
 
   //向左向右相对移动 left right
   .loopPullAndPushSize();
