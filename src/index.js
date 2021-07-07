@@ -1,1 +1,1 @@
-import "./components/index.less"
+import "./general/index.less"
