@@ -1,6 +1,6 @@
 {
   "name": "darwin-flex-layout",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "da-flex布局方案",
   "main": "./dist/general.css",
   "scripts": {
