@@ -65,13 +65,23 @@ module.exports = (env) => {
                         {
                             loader: "postcss-loader",
                             options: {
-                                postcssOptions: {
-                                    plugins: [
-                                        require('autoprefixer'),
-                                        require('postcss-preset-env'),
-                                        require('postcss-initial'),
-                                        require('postcss-flexbugs-fixes')
-                                    ]
+                                postcssOptions: (loaderContext) => {
+                                    if (loaderContext.resourcePath.includes("general")) {
+                                        return {
+                                            plugins: [
+                                                require('autoprefixer'),
+                                                require('postcss-preset-env'),
+                                                require('postcss-initial'),
+                                                require('postcss-flexbugs-fixes')
+                                            ]
+                                        }
+                                    } else {
+                                        return {
+                                            plugins: [
+                                                require('postcss-flexbugs-fixes')
+                                            ]
+                                        }
+                                    }
                                 }
                             }
                         },
